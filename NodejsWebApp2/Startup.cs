@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NodejsWebApp2.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace NodejsWebApp2
 {
@@ -20,8 +22,9 @@ namespace NodejsWebApp2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-/* services.AddTransient<IRepository, Repository>();*/
+            /* services.AddTransient<IRepository, Repository>();*/
 
+            services.AddDbContext<RestaurantDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // In production, the Angular files will be served from this directory
