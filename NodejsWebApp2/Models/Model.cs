@@ -10,7 +10,6 @@ namespace NodejsWebApp2.Models
 
         public String nome { get; set; }
         
-
         public Make Make { get; set; }
 
         public int MakeId { get; set; }
